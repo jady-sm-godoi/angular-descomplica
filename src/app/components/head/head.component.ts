@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-head',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './head.component.css'
 })
 export class HeadComponent {
-
+  @Input() nome:String = '';
 }
