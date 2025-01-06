@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "gender": "Female"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "gender": "Male"
+  },
+  {
+    "id": 3,
+    "name": "Charlie Davis",
+    "email": "charlie.davis@example.com",
+    "gender": "Non-binary"
+  },
+  {
+    "id": 4,
+    "name": "Dana Lee",
+    "email": "dana.lee@example.com",
+    "gender": "Female"
+  },
+  {
+    "id": 5,
+    "name": "Evan Brown",
+    "email": "evan.brown@example.com",
+    "gender": "Male"
+  }
+]
