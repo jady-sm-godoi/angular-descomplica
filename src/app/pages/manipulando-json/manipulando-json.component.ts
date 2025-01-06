@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import studentsData from '../../students.json';
 
 interface Student {
@@ -10,7 +11,7 @@ interface Student {
 
 @Component({
   selector: 'app-manipulando-json',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './manipulando-json.component.html',
   styleUrl: './manipulando-json.component.css'
 })
