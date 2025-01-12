@@ -8,51 +8,40 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user';
 
-import {NgxMaskDirective, provideNgxMask} from 'ngx-mask'
-import { GenericValidator } from '../../comum/validador';
-import { CommonModule } from '@angular/common';
-import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css',
-  standalone: true,
-  providers: [ provideNgxMask(), UserService],
+  selector: 'app-editar',
   imports: [
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule,
-    NgxMaskDirective,
-    CommonModule
-  ]
+    ReactiveFormsModule
+  ],
+  templateUrl: './editar.component.html',
+  styleUrl: './editar.component.css'
 })
-export class CadastroComponent {
-
+export class EditarComponent {
   user: User = new User;
+
   addressForm: any;
 
-
-  // private fb = inject(FormBuilder);
-  constructor(private fb: FormBuilder, private service: UserService){
+  constructor(private fb: FormBuilder){
+    if(localStorage.getItem('user')){
+      this.user = JSON.parse(localStorage.getItem('user') || '{}')
+    }
 
     this.addressForm = this.fb.group({
-      name: [null, Validators.compose([
+      name: [this.user.name, Validators.compose([
         Validators.required, Validators.minLength(2), Validators.maxLength(70)
       ])],
-      email: [null, Validators.required],
-      cpf: [null, Validators.compose([
-        Validators.required, GenericValidator.isValidCpf()
-      ])],
-      phone: [null, Validators.required],
+      email: [this.user.email, Validators.required],
+      phone: [this.user.phone, Validators.required],
       password: [null, Validators.required]
     });
 
   }
-
 
   onSubmit(): void {
     this.user.id = '1';
@@ -68,21 +57,10 @@ export class CadastroComponent {
     if(this.addressForm.controls['password'].value)
       this.user.password = this.addressForm.controls['password'].value;
 
-    // alert('Usuário cadastrado!');
+    alert('Usuário cadastrado!');
 
     console.log(this.user);
 
-    // localStorage.setItem('user', JSON.stringify(this.user));
-
-    this.service.addUser(this.user).subscribe({
-      next: (response) => {
-        console.log(response)
-        alert('Dado registrado com sucesso!')
-      },
-      error: (erro:any) => {
-        console.log(erro)
-        alert('Ocorreu algum erro.')
-      }
-    })
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
 }

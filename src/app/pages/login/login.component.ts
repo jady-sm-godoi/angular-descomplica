@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { AutorizacaoService } from '../../services/autorizacao.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,8 @@ import { AutorizacaoService } from '../../services/autorizacao.service';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ]
 })
 export class LoginComponent {
@@ -29,20 +31,21 @@ export class LoginComponent {
 
   private fb = inject(FormBuilder);
   addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+    email: [null, Validators.compose([
+      Validators.required, Validators.minLength(5), Validators.maxLength(50), Validators.email])
     ],
-    shipping: ['free', Validators.required]
+    password: ['', Validators.required]
   });
 
-  hasUnitNumber = false;
+
+  email = this.addressForm.controls['email'];
+
+  getErrorMessage(){
+    if(this.email.hasError('required')){
+      return 'O email é obrigatório.'
+    }
+    return this.email.hasError('email') ? 'Você deve preencher um email válido.' : '';
+  }
 
   loginClick(){
     if(this.autorizacaoService.obterLoginStatus())

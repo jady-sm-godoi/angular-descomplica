@@ -34,6 +34,6 @@ export class ListaSimplesComponent implements OnInit {
   }
 
   goToDetail(user: User): void {
-    this.router.navigate(['detalhe', user.id, user.phone, user.firstname]);
+    this.router.navigate(['detalhe', user.id, user.phone, user.name]);
   }
 }
