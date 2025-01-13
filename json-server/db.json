@@ -1,24 +1,24 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstname": "Alice",
+      "id": "1",
+      "name": "Alice",
       "email": "alice@example.com",
       "phone": "+1234567890",
       "password": "password123",
       "cpf": "413.572.450-76"
     },
     {
-      "id": 2,
-      "firstname": "Bob",
+      "id": "2",
+      "name": "Bob",
       "email": "bob@example.com",
       "phone": "+1987654321",
       "password": "securePass456",
       "cpf": "692.548.000-82"
     },
     {
-      "id": 3,
-      "firstname": "Charlie",
+      "id": "3",
+      "name": "Charlie",
       "email": "charlie@example.com",
       "phone": "+1122334455",
       "password": "Charlie789!",
@@ -31,6 +31,32 @@
       "phone": "2222222222",
       "password": "jjsdofjsçldfk",
       "cpf": ""
+    },
+    {
+      "id": "1",
+      "name": "Ciabatta Godoi",
+      "email": "ciabatta.godoi@gmail.com",
+      "phone": "4444444444",
+      "password": "sdfsfsdfsdfsd",
+      "cpf": ""
+    },
+    {
+      "id": "1",
+      "name": "Zeca Godoi",
+      "email": "zeca.godoi@gmail.com",
+      "phone": "8888888888",
+      "password": "sdffdsf",
+      "cpf": "",
+      "dataNascimento": "2025-01-04T03:00:00.000Z"
+    },
+    {
+      "id": "1",
+      "name": "Cesar Godoi",
+      "email": "cesar.godoi@gmail.com",
+      "phone": "7777777777",
+      "password": "sdasdasdfdsf",
+      "cpf": "14597778837",
+      "dataNascimento": "2025-01-05T03:00:00.000Z"
     }
   ]
 }

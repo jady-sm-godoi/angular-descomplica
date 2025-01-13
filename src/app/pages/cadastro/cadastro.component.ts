@@ -6,28 +6,36 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { User } from '../../models/user';
 
 import {NgxMaskDirective, provideNgxMask} from 'ngx-mask'
 import { GenericValidator } from '../../comum/validador';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
   standalone: true,
-  providers: [ provideNgxMask(), UserService],
+  providers: [ provideNgxMask(), UserService, provideNativeDateAdapter()],
   imports: [
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    MatDatepicker,
     ReactiveFormsModule,
     NgxMaskDirective,
-    CommonModule
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule
   ]
 })
 export class CadastroComponent {
@@ -48,6 +56,7 @@ export class CadastroComponent {
         Validators.required, GenericValidator.isValidCpf()
       ])],
       phone: [null, Validators.required],
+      dataNascimento: [null, Validators.required],
       password: [null, Validators.required]
     });
 
@@ -64,6 +73,12 @@ export class CadastroComponent {
 
     if(this.addressForm.controls['phone'].value)
       this.user.phone = this.addressForm.controls['phone'].value;
+
+    if(this.addressForm.controls['dataNascimento'].value)
+      this.user.dataNascimento = this.addressForm.controls['dataNascimento'].value;
+
+    if(this.addressForm.controls['cpf'].value)
+      this.user.cpf = this.addressForm.controls['cpf'].value;
 
     if(this.addressForm.controls['password'].value)
       this.user.password = this.addressForm.controls['password'].value;
